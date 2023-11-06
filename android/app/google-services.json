@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "248782369538",
+    "project_id": "tunceducation",
+    "storage_bucket": "tunceducation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248782369538:android:a1c906ad821002416b881b",
+        "android_client_info": {
+          "package_name": "site.tunckankilic.tunceducation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcV3KUDViCdWFGwySEydTVaTa6NFao8EA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248782369538:android:ef160ca304b9c2d26b881b",
+        "android_client_info": {
+          "package_name": "site.tunckankilic.tunceducationn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcV3KUDViCdWFGwySEydTVaTa6NFao8EA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
