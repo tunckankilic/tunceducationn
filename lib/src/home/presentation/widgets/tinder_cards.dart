@@ -1,8 +1,8 @@
+import 'package:tunceducationn/core/extensions/context_extension.dart';
+import 'package:tunceducationn/core/res/media_res.dart';
+import 'package:tunceducationn/src/home/presentation/widgets/tinder_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
-import 'package:tunceducationn/core/core.dart';
-import 'package:tunceducationn/core/extensions/context_extension.dart';
-import 'package:tunceducationn/src/home/presentation/widgets/tinder_card.dart';
 
 class TinderCards extends StatefulWidget {
   const TinderCards({super.key});
@@ -36,9 +36,13 @@ class _TinderCardsState extends State<TinderCards>
               (DragUpdateDetails details, Alignment alignment) {
             // Get card alignment
             if (alignment.x < 0) {
-              // Card is LEFT swiping
+              setState(() {
+                totalCards - 1;
+              });
             } else if (alignment.x > 0) {
-              // Card is RIGHT swiping
+              setState(() {
+                totalCards - 1;
+              });
             }
           },
           swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {

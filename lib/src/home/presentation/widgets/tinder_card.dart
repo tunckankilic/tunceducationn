@@ -1,6 +1,6 @@
+import 'package:tunceducationn/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:tunceducationn/core/extensions/context_extension.dart';
 
 class TinderCard extends StatelessWidget {
   const TinderCard({required this.isFirst, super.key, this.colour});

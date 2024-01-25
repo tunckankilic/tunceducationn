@@ -1,7 +1,7 @@
-import 'package:equatable/equatable.dart';
 import 'package:tunceducationn/core/enums/update_user.dart';
 import 'package:tunceducationn/core/usecases/usecases.dart';
-import 'package:tunceducationn/core/utils/utils.dart';
+import 'package:tunceducationn/core/utils/typedefs.dart';
+import 'package:equatable/equatable.dart';
 import 'package:tunceducationn/src/auth/domain/repositories/auth_repo.dart';
 
 class UpdateUser extends FutureUsecaseWithParams<void, UpdateUserParams> {
