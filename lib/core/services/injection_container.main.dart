@@ -5,11 +5,11 @@ final s1 = GetIt.instance;
 Future<void> init() async {
   await _initOnBoarding();
   await _initAuth();
+  await _initNotifications();
   await _initCourse();
   await _initVideo();
   await _initMaterial();
   await _initExam();
-  await _initNotifications();
   await _initChat();
 }
 

@@ -81,7 +81,7 @@ class _EditProfileViewState extends State<EditProfileView> {
           CoreUtils.showSnackBar(context, 'Profile updated Successfully');
           context.pop();
         } else if (state is AuthError) {
-          CoreUtils.showSnackBar(context, state.errorMessage);
+          CoreUtils.showSnackBar(context, state.message);
         }
       },
       builder: (context, state) {
@@ -112,7 +112,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                     }
                     bloc.add(
                       UpdateUserEvent(
-                        userAction: UpdateUserAction.password,
+                        action: UpdateUserAction.password,
                         userData: jsonEncode({
                           'oldPassword': oldPasswordController.text.trim(),
                           'newPassword': passwordController.text.trim(),
@@ -123,7 +123,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                   if (nameChanged) {
                     bloc.add(
                       UpdateUserEvent(
-                        userAction: UpdateUserAction.displayName,
+                        action: UpdateUserAction.displayName,
                         userData: fullNameController.text.trim(),
                       ),
                     );
@@ -131,7 +131,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                   if (emailChanged) {
                     bloc.add(
                       UpdateUserEvent(
-                        userAction: UpdateUserAction.email,
+                        action: UpdateUserAction.email,
                         userData: emailController.text.trim(),
                       ),
                     );
@@ -139,7 +139,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                   if (bioChanged) {
                     bloc.add(
                       UpdateUserEvent(
-                        userAction: UpdateUserAction.bio,
+                        action: UpdateUserAction.bio,
                         userData: bioController.text.trim(),
                       ),
                     );
@@ -147,7 +147,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                   if (imageChanged) {
                     bloc.add(
                       UpdateUserEvent(
-                        userAction: UpdateUserAction.profilePic,
+                        action: UpdateUserAction.profilePic,
                         userData: pickedImage,
                       ),
                     );

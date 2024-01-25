@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
+import 'package:tunceducationn/src/auth/domain/usecases/sign_up.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tunceducationn/src/auth/domain/usecases/sign_up.dart';
 
 import 'auth_repo.mock.dart';
 

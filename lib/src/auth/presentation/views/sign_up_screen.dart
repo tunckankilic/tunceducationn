@@ -44,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (_, state) {
           if (state is AuthError) {
-            CoreUtils.showSnackBar(context, state.errorMessage);
+            CoreUtils.showSnackBar(context, state.message);
           } else if (state is SignedUp) {
             context.read<AuthBloc>().add(
                   SignInEvent(
@@ -53,9 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 );
           } else if (state is SignedIn) {
-            context
-                .read<UserProvider>()
-                .initUser(state.localUser as LocalUserModel);
+            context.read<UserProvider>().initUser(state.user as LocalUserModel);
             Navigator.pushReplacementNamed(context, Dashboard.routeName);
           }
         },

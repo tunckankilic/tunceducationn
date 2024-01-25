@@ -77,7 +77,7 @@ void main() {
       ),
       expect: () => [
         const AuthLoading(),
-        const SignedIn(localUser: tUser),
+        const SignedIn(tUser),
       ],
       verify: (_) {
         verify(() => signIn(tSignInParams)).called(1);
@@ -172,7 +172,7 @@ void main() {
         );
         return authBloc;
       },
-      act: (bloc) => bloc.add(const ForgotPasswordEvent(email: 'email')),
+      act: (bloc) => bloc.add(const ForgotPasswordEvent('email')),
       expect: () => [
         const AuthLoading(),
         const ForgotPasswordSent(),
@@ -192,7 +192,7 @@ void main() {
         );
         return authBloc;
       },
-      act: (bloc) => bloc.add(const ForgotPasswordEvent(email: "email")),
+      act: (bloc) => bloc.add(const ForgotPasswordEvent('email')),
       expect: () => [
         const AuthLoading(),
         AuthError(tServerFailure.errorMessage),
@@ -216,7 +216,7 @@ void main() {
       },
       act: (bloc) => bloc.add(
         UpdateUserEvent(
-          userAction: tUpdateUserParams.action,
+          action: tUpdateUserParams.action,
           userData: tUpdateUserParams.userData,
         ),
       ),
@@ -241,7 +241,7 @@ void main() {
       },
       act: (bloc) => bloc.add(
         UpdateUserEvent(
-          userAction: tUpdateUserParams.action,
+          action: tUpdateUserParams.action,
           userData: tUpdateUserParams.userData,
         ),
       ),

@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-
+import 'package:tunceducationn/core/errors/exceptions.dart';
+import 'package:tunceducationn/core/errors/failures.dart';
 import 'package:tunceducationn/src/course/features/videos/data/datasources/video_remote_data_src.dart';
 import 'package:tunceducationn/src/course/features/videos/data/models/video_model.dart';
 import 'package:tunceducationn/src/course/features/videos/data/repos/video_repo_impl.dart';
 import 'package:tunceducationn/src/course/features/videos/domain/entities/video.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tunceducationn/core/errors/errors.dart';
 
 class MockVideoRemoteDataSrc extends Mock implements VideoRemoteDataSrc {}
 

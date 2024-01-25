@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:tunceducationn/src/auth/domain/entities/user.dart';
 import 'package:tunceducationn/src/auth/domain/usecases/sign_in.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'auth_repo.mock.dart';
 
@@ -19,7 +18,7 @@ void main() {
     usecase = SignIn(repo);
   });
 
-  LocalUser tUser = const LocalUser.empty();
+  const tUser = LocalUser.empty();
 
   test(
     'should return [LocalUser] from the [AuthRepo]',
@@ -29,7 +28,7 @@ void main() {
           email: any(named: 'email'),
           password: any(named: 'password'),
         ),
-      ).thenAnswer((_) async => Right(tUser));
+      ).thenAnswer((_) async => const Right(tUser));
 
       final result = await usecase(
         const SignInParams(
@@ -38,7 +37,7 @@ void main() {
         ),
       );
 
-      expect(result, Right<dynamic, LocalUser>(tUser));
+      expect(result, const Right<dynamic, LocalUser>(tUser));
 
       verify(
         () => repo.signIn(

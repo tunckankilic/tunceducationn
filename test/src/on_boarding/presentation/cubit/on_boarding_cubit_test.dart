@@ -1,10 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
+import 'package:tunceducationn/core/errors/failures.dart';
+import 'package:tunceducationn/src/on_boarding/domain/usecases/cache_first_timer.dart';
+import 'package:tunceducationn/src/on_boarding/domain/usecases/check_if_user_is_first_timer.dart';
+import 'package:tunceducationn/src/on_boarding/presentation/cubit/on_boarding/on_boarding_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tunceducationn/core/errors/errors.dart';
-import 'package:tunceducationn/src/on_boarding/domain/usecases/usecases.dart';
-import 'package:tunceducationn/src/on_boarding/presentation/cubit/on_boarding/on_boarding_cubit.dart';
 
 class MockCacheFirstTimer extends Mock implements CacheFirstTimer {}
 
@@ -17,10 +18,8 @@ void main() {
   late OnBoardingCubit cubit;
 
   setUp(() {
-    // MockCacheFirstTimer ve MockCheckIfUserIsFirstTimer sınıflarını oluşturun.
     cacheFirstTimer = MockCacheFirstTimer();
     checkIfUserIsFirstTimer = MockCheckIfUserIsFirstTimer();
-    // OnBoardingCubit sınıfını oluşturun ve mock sınıfları enjekte edin.
     cubit = OnBoardingCubit(
       cacheFirstTimer: cacheFirstTimer,
       checkIfUserIsFirstTimer: checkIfUserIsFirstTimer,
@@ -33,7 +32,6 @@ void main() {
   );
 
   test('initial state should be [OnBoardingInitial]', () {
-    // Başlangıç durumunun [OnBoardingInitial] ile eşleştiğini doğrulayın.
     expect(cubit.state, const OnBoardingInitial());
   });
 
@@ -52,7 +50,6 @@ void main() {
         UserCached(),
       ],
       verify: (_) {
-        // cacheFirstTimer'ın doğru bir şekilde çağrıldığını ve diğer etkileşimlerin olmadığını doğrulayın.
         verify(() => cacheFirstTimer()).called(1);
         verifyNoMoreInteractions(cacheFirstTimer);
       },
@@ -68,15 +65,11 @@ void main() {
         return cubit;
       },
       act: (cubit) => cubit.cacheFirstTimer(),
-      expect: () {
-        // Hata durumunda beklenen durumları oluşturun ve döndürün.
-        return [
-          const CachingFirstTimer(),
-          OnBoardingError(tFailure.errorMessage),
-        ];
-      },
+      expect: () => [
+        const CachingFirstTimer(),
+        OnBoardingError(tFailure.errorMessage),
+      ],
       verify: (_) {
-        // cacheFirstTimer'ın doğru bir şekilde çağrıldığını ve diğer etkileşimlerin olmadığını doğrulayın.
         verify(() => cacheFirstTimer()).called(1);
         verifyNoMoreInteractions(cacheFirstTimer);
       },
@@ -94,15 +87,11 @@ void main() {
         return cubit;
       },
       act: (cubit) => cubit.checkIfUserIsFirstTimer(),
-      expect: () {
-        // Başarılı durumlar için beklenen durumları oluşturun ve döndürün.
-        return [
-          const CheckingIfUserIsFirstTimer(),
-          const OnBoardingStatus(isFirstTimer: false),
-        ];
-      },
+      expect: () => const [
+        CheckingIfUserIsFirstTimer(),
+        OnBoardingStatus(isFirstTimer: false),
+      ],
       verify: (_) {
-        // checkIfUserIsFirstTimer'ın doğru bir şekilde çağrıldığını ve diğer etkileşimlerin olmadığını doğrulayın.
         verify(() => checkIfUserIsFirstTimer()).called(1);
         verifyNoMoreInteractions(checkIfUserIsFirstTimer);
       },
@@ -118,15 +107,11 @@ void main() {
         return cubit;
       },
       act: (cubit) => cubit.checkIfUserIsFirstTimer(),
-      expect: () {
-        // Hata durumunda beklenen durumları oluşturun ve döndürün.
-        return const [
-          CheckingIfUserIsFirstTimer(),
-          OnBoardingStatus(isFirstTimer: true),
-        ];
-      },
+      expect: () => const [
+        CheckingIfUserIsFirstTimer(),
+        OnBoardingStatus(isFirstTimer: true),
+      ],
       verify: (_) {
-        // checkIfUserIsFirstTimer'ın doğru bir şekilde çağrıldığını ve diğer etkileşimlerin olmadığını doğrulayın.
         verify(() => checkIfUserIsFirstTimer()).called(1);
         verifyNoMoreInteractions(checkIfUserIsFirstTimer);
       },

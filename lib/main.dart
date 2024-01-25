@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'tunceducationn',
+        title: 'TuncEducation',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,

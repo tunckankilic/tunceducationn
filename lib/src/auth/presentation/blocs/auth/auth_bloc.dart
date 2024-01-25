@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _signUp = signUp,
         _forgotPassword = forgotPassword,
         _updateUser = updateUser,
-        super(AuthInitial()) {
+        super(const AuthInitial()) {
     on<AuthEvent>((event, emit) {
       emit(const AuthLoading());
     });
@@ -51,7 +51,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     result.fold(
       (failure) => emit(AuthError(failure.errorMessage)),
-      (user) => emit(SignedIn(localUser: user)),
+      (user) => emit(SignedIn(user)),
     );
   }
 
@@ -89,7 +89,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     final result = await _updateUser(
       UpdateUserParams(
-        action: event.userAction,
+        action: event.action,
         userData: event.userData,
       ),
     );

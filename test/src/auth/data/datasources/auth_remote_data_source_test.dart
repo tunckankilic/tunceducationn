@@ -2,17 +2,17 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
-import 'package:firebase_storage_mocks/firebase_storage_mocks.dart';
 import 'package:tunceducationn/core/enums/update_user.dart';
-import 'package:tunceducationn/core/errors/errors.dart';
+import 'package:tunceducationn/core/errors/exceptions.dart';
 import 'package:tunceducationn/core/utils/constants.dart';
-import 'package:tunceducationn/core/utils/utils.dart';
+import 'package:tunceducationn/core/utils/typedefs.dart';
+import 'package:tunceducationn/src/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:tunceducationn/src/auth/data/models/user_model.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage_mocks/firebase_storage_mocks.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tunceducationn/src/auth/data/datasources/auth_remote_data_source.dart';
 
 class MockFirebaseAuth extends Mock implements FirebaseAuth {}
 

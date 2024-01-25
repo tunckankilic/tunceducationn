@@ -1,12 +1,12 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:tunceducationn/core/errors/errors.dart';
+import 'package:tunceducationn/core/errors/failures.dart';
 import 'package:tunceducationn/src/course/features/videos/data/models/video_model.dart';
 import 'package:tunceducationn/src/course/features/videos/domain/usecases/add_video.dart';
 import 'package:tunceducationn/src/course/features/videos/domain/usecases/get_videos.dart';
 import 'package:tunceducationn/src/course/features/videos/presentation/cubit/video_cubit.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 
 class MockAddVideo extends Mock implements AddVideo {}
 
