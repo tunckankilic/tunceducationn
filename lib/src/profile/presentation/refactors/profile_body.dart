@@ -1,4 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
@@ -8,6 +9,7 @@ import 'package:tunceducationn/core/common/app/providers/user_provider.dart';
 import 'package:tunceducationn/core/core.dart';
 import 'package:tunceducationn/core/extensions/context_extension.dart';
 import 'package:tunceducationn/core/services/injection_container.dart';
+import 'package:tunceducationn/src/auth/presentation/views/sign_in_screen.dart';
 import 'package:tunceducationn/src/course/features/exams/presentation/views/add_exam_view.dart';
 import 'package:tunceducationn/src/course/features/materials/presentation/views/add_materials_view.dart';
 import 'package:tunceducationn/src/course/features/videos/presentation/view/add_video_view.dart';
@@ -126,6 +128,62 @@ class ProfileBody extends StatelessWidget {
                     Navigator.of(context).pushNamed(AddExamView.routeName);
                   })
             ],
+            AdminButton(
+                label: "Delete Account",
+                icon: IconlyBold.delete,
+                onPressed: () async {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      backgroundColor: Colors.white,
+                      title: const Text("Do you want to delete the account?"),
+                      titleTextStyle:
+                          TextStyle(fontSize: 24, color: Colors.red[900]!),
+                      actions: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            "No",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                          ),
+                          onPressed: () async {
+                            await FirebaseAuth.instance.currentUser!.delete();
+                            Navigator.of(context)
+                                .pushReplacementNamed(SignInScreen.routeName);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("Account Has been Deleted"),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "Yes",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
           ],
         );
       },

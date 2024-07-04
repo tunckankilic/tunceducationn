@@ -67,20 +67,6 @@ class _SignInScreenState extends State<SignInScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.red[900],
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: const Text(
-                            'Sign in to your account',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
                         Baseline(
                           baseline: 100,
                           baselineType: TextBaseline.alphabetic,

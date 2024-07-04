@@ -15,9 +15,18 @@ class GradientBackground extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints.expand(),
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(image),
-          fit: BoxFit.cover,
+        // image: DecorationImage(
+        //   image: AssetImage(image),
+        //   fit: BoxFit.cover,
+        // ),
+        gradient: LinearGradient(
+          colors: [
+            Colors.blue[900]!,
+            Colors.black,
+            Colors.red[900]!,
+          ],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
         ),
       ),
       child: SafeArea(child: child),

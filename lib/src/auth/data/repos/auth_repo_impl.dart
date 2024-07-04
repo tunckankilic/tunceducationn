@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tunceducationn/core/enums/update_user.dart';
 import 'package:tunceducationn/core/errors/exceptions.dart';
 import 'package:tunceducationn/core/errors/failures.dart';
