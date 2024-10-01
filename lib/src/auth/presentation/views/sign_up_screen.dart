@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tunceducationn/core/common/app/providers/user_provider.dart';
 import 'package:tunceducationn/core/common/widgets/gradient_background.dart';
 import 'package:tunceducationn/core/common/widgets/rounded_button.dart';
@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocConsumer<AuthBloc, AuthState>(
-        listener: (_, state) {
+        listener: (context, state) {
           if (state is AuthError) {
             CoreUtils.showSnackBar(context, state.message);
           } else if (state is SignedUp) {
@@ -62,81 +62,73 @@ class _SignUpScreenState extends State<SignUpScreen> {
             image: MediaRes.authGradientBackground,
             child: SafeArea(
               child: Center(
-                child: ListView(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  children: [
-                    const Text(
-                      'Easy to learn, discover more skills.',
-                      style: TextStyle(
-                        fontFamily: Fonts.aeonik,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        fontSize: 32,
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Easy to learn, discover more skills.',
+                        style: TextStyle(
+                          fontFamily: Fonts.aeonik,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          fontSize: 32.sp,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Sign up for an account',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
+                      SizedBox(height: 10.h),
+                      Text(
+                        'Sign up for an account',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
+                      SizedBox(height: 20.h),
+                      SignUpForm(
+                        emailController: emailController,
+                        fullNameController: fullNameController,
+                        passwordController: passwordController,
+                        confirmPasswordController: confirmPasswordController,
+                        formKey: formKey,
+                      ),
+                      SizedBox(height: 30.h),
+                      if (state is AuthLoading)
+                        const CircularProgressIndicator()
+                      else
+                        RoundedButton(
+                          label: 'Sign Up',
+                          onPressed: () {
+                            FocusManager.instance.primaryFocus?.unfocus();
+                            if (formKey.currentState!.validate()) {
+                              context.read<AuthBloc>().add(
+                                    SignUpEvent(
+                                      email: emailController.text.trim(),
+                                      password: passwordController.text.trim(),
+                                      name: fullNameController.text.trim(),
+                                    ),
+                                  );
+                            }
+                          },
+                        ),
+                      SizedBox(height: 20.h),
+                      TextButton(
                         onPressed: () {
                           Navigator.pushReplacementNamed(
                             context,
                             SignInScreen.routeName,
                           );
                         },
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.red[900],
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: const Text(
-                            'Already have an account?',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
+                        child: Text(
+                          'Already have an account? Sign In',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.sp,
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    SignUpForm(
-                      emailController: emailController,
-                      fullNameController: fullNameController,
-                      passwordController: passwordController,
-                      confirmPasswordController: confirmPasswordController,
-                      formKey: formKey,
-                    ),
-                    const SizedBox(height: 30),
-                    if (state is AuthLoading)
-                      const Center(child: CircularProgressIndicator())
-                    else
-                      RoundedButton(
-                        label: 'Sign Up',
-                        onPressed: () {
-                          FocusManager.instance.primaryFocus?.unfocus();
-                          FirebaseAuth.instance.currentUser?.reload();
-                          if (formKey.currentState!.validate()) {
-                            context.read<AuthBloc>().add(
-                                  SignUpEvent(
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
-                                    name: fullNameController.text.trim(),
-                                  ),
-                                );
-                          }
-                        },
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tunceducationn/core/extensions/context_extension.dart';
 import 'package:tunceducationn/core/res/res.dart';
 import 'package:tunceducationn/core/utils/constants.dart';
@@ -19,7 +20,6 @@ class MessageBubble extends StatefulWidget {
 
 class _MessageBubbleState extends State<MessageBubble> {
   LocalUser? user;
-
   late bool isCurrentUser;
 
   @override
@@ -45,8 +45,8 @@ class _MessageBubbleState extends State<MessageBubble> {
         }
       },
       child: Container(
-        constraints: BoxConstraints(maxWidth: context.width - 45),
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        constraints: BoxConstraints(maxWidth: context.width - 45.w),
+        margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
         child: Column(
           crossAxisAlignment:
               isCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
@@ -55,24 +55,25 @@ class _MessageBubbleState extends State<MessageBubble> {
               Row(
                 children: [
                   CircleAvatar(
-                    radius: 16,
+                    radius: 16.r,
                     backgroundImage: NetworkImage(
                       user == null || (user!.profilePic == null)
                           ? kDefaultAvatar
                           : user!.profilePic!,
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8.w),
                   Text(
                     user == null ? 'Unknown User' : user!.fullName,
+                    style: TextStyle(fontSize: 12.sp),
                   ),
                 ],
               ),
             Container(
-              margin: EdgeInsets.only(top: 4, left: isCurrentUser ? 0 : 20),
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              margin: EdgeInsets.only(top: 4.h, left: isCurrentUser ? 0 : 20.w),
+              padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(16.r),
                 color: isCurrentUser
                     ? Colours.currentUserChatBubbleColour
                     : Colours.otherUserChatBubbleColour,
@@ -81,6 +82,7 @@ class _MessageBubbleState extends State<MessageBubble> {
                 widget.message.message,
                 style: TextStyle(
                   color: isCurrentUser ? Colors.white : Colors.black,
+                  fontSize: 14.sp,
                 ),
               ),
             ),

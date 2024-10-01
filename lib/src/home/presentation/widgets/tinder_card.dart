@@ -1,6 +1,7 @@
 import 'package:tunceducationn/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TinderCard extends StatelessWidget {
   const TinderCard({required this.isFirst, super.key, this.colour});
@@ -13,10 +14,10 @@ class TinderCard extends StatelessWidget {
     return Container(
       alignment: Alignment.bottomCenter,
       height: 137,
-      padding: const EdgeInsets.only(left: 20),
+      padding: EdgeInsets.only(left: 20.r),
       decoration: BoxDecoration(
         gradient: isFirst
-            ? const LinearGradient(
+            ? LinearGradient(
                 colors: [Color(0xFF8E96FF), Color(0xFFA06AF9)],
               )
             : null,
@@ -25,7 +26,7 @@ class TinderCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(.15),
-            offset: const Offset(0, 4),
+            offset: Offset(0, 4.w),
           ),
         ],
       ),
@@ -38,21 +39,21 @@ class TinderCard extends StatelessWidget {
                   '${context.courseOfTheDay?.title ?? 'Chemistry'} '
                   'final\nexams',
                   textAlign: TextAlign.left,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
-                    fontSize: 20,
+                    fontSize: 20.sp,
                   ),
                 ),
-                const Row(
+                Row(
                   children: [
                     Icon(IconlyLight.notification, color: Colors.white),
-                    SizedBox(width: 8),
+                    SizedBox(width: 8.w),
                     Text(
                       '45 minutes',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                       ),
                     ),
                   ],

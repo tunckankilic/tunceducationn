@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:tunceducationn/core/common/widgets/changeable_field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpForm extends StatefulWidget {
   // SignUpForm sınıfı, kayıt formunu temsil eder.
@@ -41,13 +42,13 @@ class _SignUpFormState extends State<SignUpForm> {
             hintText: 'Full Name', // İpucu metni
             keyboardType: TextInputType.name, // Klavye türü
           ),
-          const SizedBox(height: 25), // Boşluk ekleyin
+          SizedBox(height: 25.sp), // Boşluk ekleyin
           ChangeableField(
             controller: widget.emailController, // E-posta denetleyicisi
             hintText: 'Email address', // İpucu metni
             keyboardType: TextInputType.emailAddress, // Klavye türü
           ),
-          const SizedBox(height: 25), // Boşluk ekleyin
+          SizedBox(height: 25.sp), // Boşluk ekleyin
           ChangeableField(
             controller: widget.passwordController, // Şifre denetleyicisi
             hintText: 'Password', // İpucu metni
@@ -68,7 +69,7 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
           ),
-          const SizedBox(height: 25), // Boşluk ekleyin
+          SizedBox(height: 25.sp), // Boşluk ekleyin
           ChangeableField(
             controller:
                 widget.confirmPasswordController, // Şifre onayı denetleyicisi

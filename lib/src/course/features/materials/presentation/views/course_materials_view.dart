@@ -12,6 +12,7 @@ import 'package:tunceducationn/src/course/features/materials/presentation/widget
 import 'package:flutter/material.dart' hide MaterialState;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseMaterialsView extends StatefulWidget {
   const CourseMaterialsView(this.course, {super.key});
@@ -58,7 +59,9 @@ class _CourseMaterialsViewState extends State<CourseMaterialsView> {
             } else if ((state is MaterialsLoaded && state.materials.isEmpty) ||
                 state is MaterialError) {
               return NotFoundText(
-                'No materials found for ${widget.course.title}',
+                text: 'No materials found for ${widget.course.title}',
+                textAlign: TextAlign.center,
+                fontSize: 16.sp,
               );
             } else if (state is MaterialsLoaded) {
               final materials = state.materials

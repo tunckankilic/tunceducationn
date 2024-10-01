@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tunceducationn/core/enums/update_user.dart';
 import 'package:tunceducationn/src/auth/domain/entities/user.dart';
 import 'package:tunceducationn/src/auth/domain/usecases/forgot_password.dart';

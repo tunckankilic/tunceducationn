@@ -9,6 +9,7 @@ import 'package:tunceducationn/src/course/features/exams/presentation/views/cour
 import 'package:tunceducationn/src/course/features/materials/presentation/views/course_materials_view.dart';
 import 'package:tunceducationn/src/course/features/videos/presentation/view/course_videos_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseDetailsScreen extends StatelessWidget {
   const CourseDetailsScreen(this.course, {super.key});
@@ -27,7 +28,7 @@ class CourseDetailsScreen extends StatelessWidget {
         image: MediaRes.homeGradientBackground,
         child: SafeArea(
           child: ListView(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
             children: [
               SizedBox(
                 height: context.height * .3,
@@ -37,33 +38,33 @@ class CourseDetailsScreen extends StatelessWidget {
                       : Image.asset(MediaRes.casualMeditation),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     course.title,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: TextStyle(
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   if (course.description != null)
                     ExpandableText(context, text: course.description!),
                   if (course.numberOfMaterials > 0 ||
                       course.numberOfVideos > 0 ||
                       course.numberOfExams > 0) ...[
-                    const SizedBox(height: 20),
-                    const Text(
+                    SizedBox(height: 20),
+                    Text(
                       'Subject Details',
                       style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                      ),
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
                     ),
                     if (course.numberOfVideos > 0) ...[
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       CourseInfoTile(
                         image: MediaRes.courseInfoVideo,
                         title: '${course.numberOfVideos} Video(s)',
@@ -76,7 +77,7 @@ class CourseDetailsScreen extends StatelessWidget {
                       ),
                     ],
                     if (course.numberOfExams > 0) ...[
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       CourseInfoTile(
                         image: MediaRes.courseInfoExam,
                         title: '${course.numberOfExams} Exam(s)',
@@ -88,7 +89,7 @@ class CourseDetailsScreen extends StatelessWidget {
                       ),
                     ],
                     if (course.numberOfMaterials > 0) ...[
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       CourseInfoTile(
                         image: MediaRes.courseInfoMaterial,
                         title: '${course.numberOfMaterials} Material(s)',

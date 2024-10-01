@@ -3,6 +3,7 @@ import 'package:tunceducationn/core/res/media_res.dart';
 import 'package:tunceducationn/src/home/presentation/widgets/tinder_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TinderCards extends StatefulWidget {
   const TinderCards({super.key});
@@ -60,9 +61,9 @@ class _TinderCardsState extends State<TinderCards>
             return Stack(
               children: [
                 Positioned(
-                  bottom: 110,
-                  right: 0,
-                  left: 0,
+                  bottom: 110.h,
+                  right: 0.r,
+                  left: 0.r,
                   child: TinderCard(
                     isFirst: isFirst,
                     colour: isFirst ? null : colorByIndex,
@@ -70,12 +71,12 @@ class _TinderCardsState extends State<TinderCards>
                 ),
                 if (isFirst)
                   Positioned(
-                    bottom: 130,
-                    right: 20,
+                    bottom: 130.h,
+                    right: 20.r,
                     child: Image.asset(
                       MediaRes.microscope,
-                      height: 180,
-                      width: 149,
+                      height: 180.h,
+                      width: 149.w,
                     ),
                   ),
               ],

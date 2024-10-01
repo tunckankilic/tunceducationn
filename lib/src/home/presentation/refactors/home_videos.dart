@@ -8,6 +8,7 @@ import 'package:tunceducationn/src/course/features/videos/presentation/cubit/vid
 import 'package:tunceducationn/src/home/presentation/widgets/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeVideos extends StatefulWidget {
   const HomeVideos({super.key});
@@ -41,7 +42,9 @@ class _HomeVideosState extends State<HomeVideos> {
         } else if ((state is VideosLoaded && state.videos.isEmpty) ||
             state is VideoError) {
           return NotFoundText(
-            'No videos found for ${context.courseOfTheDay!.title}',
+            text: 'No videos found for ${context.courseOfTheDay!.title}',
+            textAlign: TextAlign.center,
+            fontSize: 16.0.sp,
           );
         } else if (state is VideosLoaded) {
           return Column(

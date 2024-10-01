@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tunceducationn/core/enums/update_user.dart';
 import 'package:tunceducationn/core/utils/typedefs.dart';
 import 'package:tunceducationn/src/auth/domain/entities/user.dart';

@@ -6,6 +6,7 @@ import 'package:tunceducationn/src/course/features/exams/presentation/widgets/ex
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ExamView extends StatefulWidget {
   const ExamView({super.key});
@@ -36,7 +37,7 @@ class _ExamViewState extends State<ExamView> {
         context: context,
         builder: (context) {
           return AlertDialog.adaptive(
-            title: const Text('Submit Exam?'),
+            title: Text('Submit Exam?'),
             content: Text(
               'You have ${examController.remainingTime} $timeLeftText left.\n'
               'Are you sure you want to submit?',
@@ -46,13 +47,13 @@ class _ExamViewState extends State<ExamView> {
                 onPressed: () {
                   Navigator.pop(context, false);
                 },
-                child: const Text('Cancel'),
+                child: Text('Cancel'),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context, true);
                 },
-                child: const Text(
+                child: Text(
                   'Submit',
                   style: TextStyle(color: Colours.redColour),
                 ),
@@ -126,21 +127,20 @@ class _ExamViewState extends State<ExamView> {
                 context: context,
                 builder: (context) {
                   return AlertDialog.adaptive(
-                    title: const Text('Exit Exam'),
-                    content:
-                        const Text('Are you sure you want to Exit the exam'),
+                    title: Text('Exit Exam'),
+                    content: Text('Are you sure you want to Exit the exam'),
                     actions: [
                       TextButton(
                         onPressed: () {
                           Navigator.pop(context, false);
                         },
-                        child: const Text('Cancel'),
+                        child: Text('Cancel'),
                       ),
                       TextButton(
                         onPressed: () {
                           Navigator.pop(context, true);
                         },
-                        child: const Text('Exit exam'),
+                        child: Text('Exit exam'),
                       ),
                     ],
                   );
@@ -155,12 +155,13 @@ class _ExamViewState extends State<ExamView> {
                 title: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Image.asset(MediaRes.examTimeRed, height: 30, width: 30),
-                    const SizedBox(width: 10),
+                    Image.asset(MediaRes.examTimeRed,
+                        height: 30.h, width: 30.w),
+                    SizedBox(width: 10.w),
                     Text(
                       controller.remainingTime,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w600,
                         color: Colours.redColour,
                       ),
@@ -170,13 +171,13 @@ class _ExamViewState extends State<ExamView> {
                 actions: [
                   TextButton(
                     onPressed: submitExam,
-                    child: const Text('Submit', style: TextStyle(fontSize: 16)),
+                    child: Text('Submit', style: TextStyle(fontSize: 16)),
                   ),
                 ],
               ),
               body: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.all(20),
                   child: Column(
                     children: [
                       Expanded(
@@ -185,47 +186,47 @@ class _ExamViewState extends State<ExamView> {
                             Text(
                               'Question ${controller.currentIndex + 1}',
                               textAlign: TextAlign.left,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF666E7A),
-                                fontSize: 20,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             DecoratedBox(
                               decoration: BoxDecoration(
-                                color: const Color(0xFFC4C4C4),
+                                color: Color(0xFFC4C4C4),
                                 borderRadius: BorderRadius.circular(24),
                               ),
                               child: Center(
                                 child: controller.exam.imageUrl == null
                                     ? Image.asset(
                                         MediaRes.test,
-                                        height: 200,
+                                        height: 200.h,
                                         width: double.infinity,
                                         fit: BoxFit.cover,
                                       )
                                     : Image.network(
                                         controller.exam.imageUrl!,
-                                        height: 200,
+                                        height: 200.h,
                                         width: double.infinity,
                                         fit: BoxFit.cover,
                                       ),
                               ),
                             ),
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
                             Text(
                               controller.currentQuestion.questionText,
                               textAlign: TextAlign.left,
-                              style: const TextStyle(
-                                fontSize: 18,
+                              style: TextStyle(
+                                fontSize: 18.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             ListView.builder(
                               shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
+                              physics: NeverScrollableScrollPhysics(),
                               itemCount:
                                   controller.currentQuestion.choices.length,
                               itemBuilder: (_, index) {
@@ -238,8 +239,8 @@ class _ExamViewState extends State<ExamView> {
                                   title: Text(
                                     '${choice.identifier}. '
                                     '${choice.choiceAnswer}',
-                                    style: const TextStyle(
-                                      fontSize: 16,
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
@@ -252,7 +253,7 @@ class _ExamViewState extends State<ExamView> {
                           ],
                         ),
                       ),
-                      const ExamNavigationBlob(),
+                      ExamNavigationBlob(),
                     ],
                   ),
                 ),

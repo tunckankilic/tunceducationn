@@ -7,6 +7,7 @@ import 'package:tunceducationn/src/course/presentation/views/all_courses_view.da
 import 'package:tunceducationn/src/course/presentation/views/course_details_screen.dart';
 import 'package:tunceducationn/src/home/presentation/widgets/section_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeSubjects extends StatelessWidget {
   const HomeSubjects({required this.courses, super.key});
@@ -24,14 +25,14 @@ class HomeSubjects extends StatelessWidget {
           seeAll: courses.length > 4,
           onSeeAll: () => context.push(AllCoursesView(courses)),
         ),
-        const Text(
+        Text(
           'Explore our courses',
           style: TextStyle(
             fontWeight: FontWeight.w500,
             color: Colours.neutralTextColour,
           ),
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: 20.h),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -1,6 +1,7 @@
 import 'package:tunceducationn/src/course/features/exams/presentation/app/providers/exam_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ExamNavigationBlob extends StatelessWidget {
   const ExamNavigationBlob({super.key});
@@ -15,15 +16,15 @@ class ExamNavigationBlob extends StatelessWidget {
             Text(
               'Question ${controller.currentIndex + 1} of'
               ' ${controller.totalQuestions}',
-              style: const TextStyle(fontSize: 12, color: Color(0xFF666E7A)),
+              style: TextStyle(fontSize: 12, color: Color(0xFF666E7A)),
             ),
-            const SizedBox(height: 5),
+            SizedBox(height: 5.h),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(90),
-                boxShadow: const [
+                boxShadow: [
                   BoxShadow(
                     color: Color(0xFFE8E8E8),
                     blurRadius: 20,
@@ -46,9 +47,9 @@ class ExamNavigationBlob extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    color: const Color(0xFFE4E6EA),
-                    width: 1,
-                    height: 24,
+                    color: Color(0xFFE4E6EA),
+                    width: 1.w,
+                    height: 24.h,
                   ),
                   IconButton(
                     onPressed: controller.nextQuestion,

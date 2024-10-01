@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tunceducationn/core/extensions/context_extension.dart';
 import 'package:tunceducationn/core/res/res.dart';
 import 'package:tunceducationn/src/chat/data/models/message_model.dart';
@@ -29,7 +30,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       child: TextField(
         controller: controller,
         focusNode: focusNode,
@@ -37,24 +38,25 @@ class _ChatInputFieldState extends State<ChatInputField> {
         maxLines: 5,
         decoration: InputDecoration(
           hintText: 'Message',
-          hintStyle: const TextStyle(
-            color: Color(0xFF9FA5BB),
+          hintStyle: TextStyle(
+            color: const Color(0xFF9FA5BB),
+            fontSize: 14.sp,
           ),
           filled: true,
           fillColor: Colours.chatFieldColour,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 22,
-            vertical: 8,
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 22.w,
+            vertical: 8.h,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(50.r),
             borderSide: BorderSide.none,
           ),
           suffixIcon: Transform.scale(
-            scale: .75,
+            scale: 0.75,
             child: IconButton.filled(
               padding: EdgeInsets.zero,
-              icon: const Icon(IconlyLight.send, color: Colors.white),
+              icon: Icon(IconlyLight.send, color: Colors.white, size: 24.sp),
               onPressed: () {
                 final message = controller.text.trim();
                 if (message.isEmpty) return;

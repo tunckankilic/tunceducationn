@@ -1,6 +1,5 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tunceducationn/core/common/views/loading_view.dart';
-import 'package:tunceducationn/core/extensions/context_extension.dart';
-import 'package:tunceducationn/core/services/injection_container.dart';
 import 'package:tunceducationn/core/utils/core_utils.dart';
 import 'package:tunceducationn/src/chat/domain/entities/group.dart';
 import 'package:tunceducationn/src/chat/domain/entities/message.dart';
@@ -22,7 +21,6 @@ class ChatView extends StatefulWidget {
 
 class _ChatViewState extends State<ChatView> {
   bool showingDialog = false;
-
   List<Message> messages = [];
   bool showInputField = false;
 
@@ -49,7 +47,7 @@ class _ChatViewState extends State<ChatView> {
             showingDialog = true;
             CoreUtils.showLoadingDialog(context);
           } else if (state is LeftGroup) {
-            context.pop();
+            Navigator.of(context).pop();
           } else if (state is MessagesLoaded) {
             setState(() {
               messages = state.messages;
@@ -77,7 +75,7 @@ class _ChatViewState extends State<ChatView> {
                       final showSenderInfo = previousMessage == null ||
                           previousMessage.senderId != message.senderId;
                       return BlocProvider(
-                        create: (_) => s1<ChatCubit>(),
+                        create: (_) => context.read<ChatCubit>(),
                         child: MessageBubble(
                           message,
                           showSenderInfo: showSenderInfo,
@@ -86,9 +84,9 @@ class _ChatViewState extends State<ChatView> {
                     },
                   ),
                 ),
-                const Divider(height: 1),
+                Divider(height: 1.h),
                 BlocProvider(
-                  create: (_) => s1<ChatCubit>(),
+                  create: (_) => context.read<ChatCubit>(),
                   child: ChatInputField(groupId: widget.group.id),
                 ),
               ],

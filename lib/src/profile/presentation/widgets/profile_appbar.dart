@@ -42,24 +42,6 @@ class ProfileAppBar extends StatelessWidget implements PreferredSize {
             ),
             PopupMenuItem<void>(
               child: const PopUpItem(
-                icon: Icons.notifications,
-                title: "Notification",
-              ),
-              onTap: () => context.push(
-                const Placeholder(),
-              ),
-            ),
-            PopupMenuItem<void>(
-              child: const PopUpItem(
-                icon: Icons.info,
-                title: "Help",
-              ),
-              onTap: () => context.push(
-                const Placeholder(),
-              ),
-            ),
-            PopupMenuItem<void>(
-              child: const PopUpItem(
                 icon: Icons.info,
                 title: "Privacy",
               ),
@@ -100,8 +82,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSize {
   }
 
   _launchURL() async {
-    const url =
-        'http://tunckankilic.site/tunceducationn-app-custom-teacher-online-app-privacy/';
+    const url = 'http://https://www.tunckankilic.site/tunceducationn-privacy/';
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
     } else {

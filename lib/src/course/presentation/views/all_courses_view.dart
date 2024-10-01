@@ -5,6 +5,7 @@ import 'package:tunceducationn/core/res/media_res.dart';
 import 'package:tunceducationn/src/course/domain/entities/course.dart';
 import 'package:tunceducationn/src/course/presentation/views/course_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AllCoursesView extends StatelessWidget {
   const AllCoursesView(this.courses, {super.key});
@@ -17,28 +18,28 @@ class AllCoursesView extends StatelessWidget {
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: const NestedBackButton(),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+        leading: NestedBackButton(),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
       body: GradientBackground(
         image: MediaRes.homeGradientBackground,
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.only(left: 20),
+              SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.only(left: 20.w),
                 child: Text(
                   'All Subjects',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 24,
+                    fontSize: 24.sp,
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: 30.h),
               Center(
                 child: Wrap(
                   spacing: 20,

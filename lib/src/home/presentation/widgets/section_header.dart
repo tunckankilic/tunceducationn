@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tunceducationn/core/core.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SectionHeader extends StatelessWidget {
   const SectionHeader({
@@ -20,8 +21,8 @@ class SectionHeader extends StatelessWidget {
       children: [
         Text(
           sectionTitle,
-          style: const TextStyle(
-            fontSize: 18,
+          style: TextStyle(
+            fontSize: 18.sp,
             color: Colors.white,
             fontWeight: FontWeight.w600,
           ),

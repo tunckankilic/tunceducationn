@@ -147,7 +147,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       switch (action) {
         case UpdateUserAction.email:
-          await _authClient.currentUser?.updateEmail(userData as String);
+          await _authClient.currentUser
+              ?.verifyBeforeUpdateEmail(userData as String);
           await _updateUserData({'email': userData});
         case UpdateUserAction.displayName:
           await _authClient.currentUser?.updateDisplayName(userData as String);

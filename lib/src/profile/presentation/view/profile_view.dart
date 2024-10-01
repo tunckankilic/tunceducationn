@@ -10,6 +10,7 @@ import 'package:tunceducationn/src/notifications/presentation/cubit/notification
 import 'package:tunceducationn/src/profile/presentation/refactors/profile_body.dart';
 import 'package:tunceducationn/src/profile/presentation/refactors/profile_header.dart';
 import 'package:tunceducationn/src/profile/presentation/widgets/profile_appbar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -23,7 +24,7 @@ class ProfileView extends StatelessWidget {
       body: GradientBackground(
         image: MediaRes.profileGradientBackground,
         child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           children: const [
             ProfileHeader(),
             ProfileBody(),

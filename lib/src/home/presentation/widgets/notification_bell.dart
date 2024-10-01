@@ -8,6 +8,7 @@ import 'package:tunceducationn/src/notifications/presentation/presentation/views
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationBell extends StatefulWidget {
   const NotificationBell({super.key});
@@ -61,13 +62,13 @@ class _NotificationBellState extends State<NotificationBell> {
               .length;
           final showBadge = unseenNotificationsLength > 0;
           return Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: EdgeInsets.only(right: 8.r),
             child: GestureDetector(
               onTap: () {
                 context.push(
                   BlocProvider(
                     create: (_) => s1<NotificationCubit>(),
-                    child: const NotificationsView(),
+                    child: NotificationsView(),
                   ),
                 );
               },
@@ -76,17 +77,17 @@ class _NotificationBellState extends State<NotificationBell> {
                 position: BadgePosition.topEnd(end: -1),
                 badgeContent: Text(
                   unseenNotificationsLength.toString(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
-                    fontSize: 8,
+                    fontSize: 8.sp,
                   ),
                 ),
-                child: const Icon(IconlyLight.notification),
+                child: Icon(IconlyLight.notification),
               ),
             ),
           );
         }
-        return const Icon(IconlyLight.notification);
+        return Icon(IconlyLight.notification);
       },
     );
   }
