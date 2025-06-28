@@ -45,11 +45,25 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>This app requires access to the photo library</string>
-    <key>NSCameraUsageDescription</key>
-    <string>This app requires access to the camera</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>This app does not require access to the microphone</string>
+	<!-- Push Notifications -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>audio</string>
+	</array>
+	<!-- File Picker ve Kamera İzinleri -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fotoğraf seçmek için galerinize erişim izni gerekiyor.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Fotoğraf çekmek için kamera izni gerekiyor.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Ses kaydı için mikrofon izni gerekiyor.</string>
+	<!-- Firebase Crashlytics -->
+	<key>FirebaseCrashlyticsCollectionEnabled</key>
+	<true/>
+	<!-- Firebase Analytics -->
+	<key>FirebaseAnalyticsEnabled</key>
+	<true/>
 </dict>
 </plist>
