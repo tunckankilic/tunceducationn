@@ -11,6 +11,7 @@ import 'package:tunceducationn/core/res/res.dart';
 import 'package:tunceducationn/core/utils/core_utils.dart';
 import 'package:tunceducationn/src/auth/presentation/blocs/auth/auth_bloc.dart';
 import 'package:tunceducationn/src/profile/presentation/widgets/edit_profile_form.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileView extends StatefulWidget {
   const EditProfileView({super.key});
@@ -90,11 +91,11 @@ class _EditProfileViewState extends State<EditProfileView> {
           backgroundColor: Colors.white,
           appBar: AppBar(
             leading: const NestedBackButton(),
-            title: const Text(
+            title: Text(
               'Edit Profile',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 24,
+                fontSize: 24.sp,
               ),
             ),
             actions: [
@@ -164,7 +165,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                           return Text(
                             'Done',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
                               color: nothingChanged
                                   ? Colors.grey
@@ -200,8 +201,8 @@ class _EditProfileViewState extends State<EditProfileView> {
                         alignment: AlignmentDirectional.center,
                         children: [
                           Container(
-                            height: 100,
-                            width: 100,
+                            height: 100.h,
+                            width: 100.w,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.black.withOpacity(.5),
@@ -221,19 +222,19 @@ class _EditProfileViewState extends State<EditProfileView> {
                     );
                   },
                 ),
-                const SizedBox(height: 10),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                SizedBox(height: 10.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
                   child: Text(
                     'We recommend an image of at least 400x400',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       color: Color(0xFF777E90),
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 EditProfileForm(
                   fullNameController: fullNameController,
                   emailController: emailController,

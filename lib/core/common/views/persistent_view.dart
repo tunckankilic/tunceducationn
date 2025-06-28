@@ -6,9 +6,9 @@ import 'package:tunceducationn/core/common/app/providers/tab_navigation.dart';
 class PersistentView extends StatefulWidget {
   final Widget? body;
   const PersistentView({
-    Key? key,
+    super.key,
     this.body,
-  }) : super(key: key);
+  });
 
   @override
   State<PersistentView> createState() => _PersistentViewState();

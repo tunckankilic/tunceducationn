@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tunceducationn/core/extensions/context_extension.dart';
 import 'package:tunceducationn/core/res/res.dart';
 import 'package:tunceducationn/src/chat/domain/entities/group.dart';
@@ -13,11 +14,12 @@ class OtherGroupTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(group.name),
+      title: Text(group.name, style: TextStyle(fontSize: 16.sp)),
       leading: ClipRRect(
-        borderRadius: BorderRadius.circular(360),
+        borderRadius: BorderRadius.circular(360.r),
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
+          radius: 24.r,
           child: Image.network(group.groupImageUrl!),
         ),
       ),
@@ -25,6 +27,7 @@ class OtherGroupTile extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Colours.primaryColour,
           foregroundColor: Colors.white,
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         ),
         onPressed: () {
           context.read<ChatCubit>().joinGroup(
@@ -32,7 +35,7 @@ class OtherGroupTile extends StatelessWidget {
                 userId: context.currentUser!.uid,
               );
         },
-        child: const Text('Join'),
+        child: Text('Join', style: TextStyle(fontSize: 14.sp)),
       ),
     );
   }

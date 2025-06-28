@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PickedResourceHorizontalText extends StatelessWidget {
   const PickedResourceHorizontalText({
@@ -13,18 +14,18 @@ class PickedResourceHorizontalText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 5.h),
       child: RichText(
         text: TextSpan(
           text: '$label: ',
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
           children: [
             TextSpan(
               text: value,
-              style: const TextStyle(fontWeight: FontWeight.w300),
+              style: TextStyle(fontWeight: FontWeight.w300),
             ),
           ],
         ),

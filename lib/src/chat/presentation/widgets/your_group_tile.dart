@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tunceducationn/core/common/widgets/time_text.dart';
 import 'package:tunceducationn/core/extensions/context_extension.dart';
 import 'package:tunceducationn/core/services/injection_container.dart';
@@ -15,11 +16,12 @@ class YourGroupTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(group.name),
+      title: Text(group.name, style: TextStyle(fontSize: 16.sp)),
       leading: ClipRRect(
-        borderRadius: BorderRadius.circular(360),
+        borderRadius: BorderRadius.circular(360.r),
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
+          radius: 24.r,
           child: Image.network(group.groupImageUrl!),
         ),
       ),
@@ -31,13 +33,13 @@ class YourGroupTile extends StatelessWidget {
                 text: '~ ${group.lastMessageSenderName}: ',
                 style: TextStyle(
                   color: Colors.grey.shade600,
-                  fontSize: 12,
+                  fontSize: 12.sp,
                 ),
                 children: [
                   TextSpan(
-                    text: '${group.lastMessage}',
-                    style: const TextStyle(
-                      fontSize: 14,
+                    text: group.lastMessage,
+                    style: TextStyle(
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -50,6 +52,7 @@ class YourGroupTile extends StatelessWidget {
               group.lastMessageTimestamp!,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 12.sp),
             )
           : null,
       onTap: () {

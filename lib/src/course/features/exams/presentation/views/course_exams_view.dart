@@ -9,6 +9,7 @@ import 'package:tunceducationn/src/course/features/exams/presentation/app/cubit/
 import 'package:tunceducationn/src/course/features/exams/presentation/views/exam_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseExamsView extends StatefulWidget {
   const CourseExamsView(this.course, {super.key});
@@ -39,7 +40,7 @@ class _CourseExamsViewState extends State<CourseExamsView> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text('${widget.course.title} Exams'),
-        leading: const NestedBackButton(),
+        leading: NestedBackButton(),
       ),
       body: BlocConsumer<ExamCubit, ExamState>(
         listener: (_, state) {
@@ -49,41 +50,43 @@ class _CourseExamsViewState extends State<CourseExamsView> {
         },
         builder: (context, state) {
           if (state is GettingExams) {
-            return const LoadingView();
+            return LoadingView();
           } else if ((state is ExamsLoaded && state.exams.isEmpty) ||
               state is ExamError) {
             return NotFoundText(
-              'No exams found for ${widget.course.title}',
+              textAlign: TextAlign.center,
+              fontSize: 16.sp,
+              text: 'No exams found for ${widget.course.title}',
             );
           } else if (state is ExamsLoaded) {
             return SafeArea(
               child: ListView.builder(
                 itemCount: state.exams.length,
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 itemBuilder: (_, index) {
                   final exam = state.exams[index];
                   return Stack(
                     children: [
                       Card(
-                        margin: const EdgeInsets.all(4).copyWith(bottom: 30),
+                        margin: EdgeInsets.all(4).copyWith(bottom: 30),
                         child: Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: EdgeInsets.all(10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 exam.title,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(height: 10),
+                              SizedBox(height: 10.h),
                               Text(exam.description),
-                              const SizedBox(height: 10),
+                              SizedBox(height: 10.h),
                               Text(
                                 exam.timeLimit.displayDuration,
-                                style: const TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: 12),
                               ),
                             ],
                           ),
@@ -96,7 +99,7 @@ class _CourseExamsViewState extends State<CourseExamsView> {
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: context.width * .2,
-                            vertical: 10,
+                            vertical: 10.h,
                           ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -110,7 +113,7 @@ class _CourseExamsViewState extends State<CourseExamsView> {
                                 arguments: exam,
                               );
                             },
-                            child: const Text('Take Exam'),
+                            child: Text('Take Exam'),
                           ),
                         ),
                       ),
@@ -121,7 +124,7 @@ class _CourseExamsViewState extends State<CourseExamsView> {
             );
           }
 
-          return const SizedBox.shrink();
+          return SizedBox.shrink();
         },
       ),
     );

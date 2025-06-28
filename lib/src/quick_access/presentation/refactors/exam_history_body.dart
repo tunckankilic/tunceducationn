@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tunceducationn/core/common/views/loading_view.dart';
 import 'package:tunceducationn/core/common/widgets/not_found_text.dart';
 import 'package:tunceducationn/core/utils/core_utils.dart';
@@ -37,7 +38,11 @@ class _ExamHistoryBodyState extends State<ExamHistoryBody> {
           return const LoadingView();
         } else if ((state is UserExamsLoaded && state.exams.isEmpty) ||
             state is ExamError) {
-          return const NotFoundText('No exams completed yet');
+          return NotFoundText(
+            text: 'No exams completed yet',
+            fontSize: 16.sp,
+            textAlign: TextAlign.center,
+          );
         } else if (state is UserExamsLoaded) {
           final exams = state.exams
             ..sort(

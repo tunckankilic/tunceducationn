@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tunceducationn/core/common/app/providers/course_of_the_day_notifier.dart';
@@ -18,6 +20,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   await init();
   runApp(const MyApp());
 }
@@ -27,45 +30,50 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => UserProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => DashboardController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => CourseOfTheDayNotifier(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => NotificationsNotifier(
-            s1<SharedPreferences>(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => UserProvider(),
           ),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ExamController(
-            exam: s1<Exam>(),
+          ChangeNotifierProvider(
+            create: (_) => DashboardController(),
           ),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => QuickAccessTabController(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'TuncEducation',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          useMaterial3: true,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          fontFamily: Fonts.poppins,
-          appBarTheme: const AppBarTheme(
-            color: Colors.transparent,
+          ChangeNotifierProvider(
+            create: (_) => CourseOfTheDayNotifier(),
           ),
-          colorScheme: ColorScheme.fromSwatch(
-              accentColor: const Color.fromARGB(255, 182, 0, 0)),
+          ChangeNotifierProvider(
+            create: (_) => NotificationsNotifier(
+              s1<SharedPreferences>(),
+            ),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => ExamController(
+              exam: s1<Exam>(),
+            ),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => QuickAccessTabController(),
+          ),
+        ],
+        child: MaterialApp(
+          title: 'TuncEducation',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            useMaterial3: true,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            fontFamily: Fonts.poppins,
+            textTheme: TextTheme(),
+            appBarTheme: const AppBarTheme(
+                color: Colors.transparent,
+                titleTextStyle: TextStyle(color: Colors.white),
+                iconTheme: IconThemeData(color: Colors.white)),
+            colorScheme: ColorScheme.fromSwatch(
+                accentColor: const Color.fromARGB(255, 182, 0, 0)),
+          ),
+          onGenerateRoute: generateRoute,
         ),
-        onGenerateRoute: generateRoute,
       ),
     );
   }

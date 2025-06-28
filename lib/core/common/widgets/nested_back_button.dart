@@ -6,13 +6,12 @@ class NestedBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        try {
-          context.pop();
-          return false;
-        } catch (_) {
-          return true;
+    return PopScope(
+      onPopInvoked: (didPop) async {
+        if (didPop) {
+          return context.pop();
+        } else {
+          return;
         }
       },
       child: IconButton(
@@ -26,11 +25,11 @@ class NestedBackButton extends StatelessWidget {
         icon: Theme.of(context).platform == TargetPlatform.iOS
             ? const Icon(
                 Icons.arrow_back_ios_new,
-                color: Colors.white,
+                color: Colors.black,
               )
             : const Icon(
                 Icons.arrow_back,
-                color: Colors.white,
+                color: Colors.black,
               ),
       ),
     );

@@ -51,11 +51,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         settings: settings,
       );
 
+
     case '/forgot-password':
       return _pageBuilder(
         (_) => const Scaffold(),
         settings: settings,
       );
+
     case CourseDetailsScreen.routeName:
       return _pageBuilder(
         (_) => CourseDetailsScreen(settings.arguments! as Course),

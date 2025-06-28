@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' show PreviewData;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddVideoView extends StatefulWidget {
   const AddVideoView({super.key});
@@ -141,9 +142,9 @@ class _AddVideoViewState extends State<AddVideoView> {
         },
         child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(title: const Text('Add Video')),
+          appBar: AppBar(title: Text('Add Video')),
           body: ListView(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(20),
             shrinkWrap: true,
             children: [
               Form(
@@ -153,7 +154,7 @@ class _AddVideoViewState extends State<AddVideoView> {
                   notifier: courseNotifier,
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               InfoField(
                 controller: urlController,
                 hintText: 'Enter video URL',
@@ -169,10 +170,10 @@ class _AddVideoViewState extends State<AddVideoView> {
                   return Column(
                     children: [
                       if (urlController.text.trim().isNotEmpty) ...[
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         ElevatedButton(
                           onPressed: fetchVideo,
-                          child: const Text('Fetch Video'),
+                          child: Text('Fetch Video'),
                         ),
                       ],
                     ],
@@ -201,7 +202,7 @@ class _AddVideoViewState extends State<AddVideoView> {
                 ),
               if (video != null)
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 20.h),
                   child: VideoTile(
                     video!,
                     isFile: thumbNailIsFile,
@@ -230,7 +231,7 @@ class _AddVideoViewState extends State<AddVideoView> {
                   },
                 ),
               ],
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Center(
                 child: ReactiveButton(
                   disabled: video == null,

@@ -11,9 +11,10 @@ import 'package:tunceducationn/core/enums/notification_enum.dart';
 import 'package:tunceducationn/src/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:tunceducationn/src/notifications/presentation/presentation/widgets/notification_wrapper.dart';
 import 'dart:io';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddCourseSheet extends StatefulWidget {
-  const AddCourseSheet({Key? key}) : super(key: key);
+  const AddCourseSheet({super.key});
 
   @override
   State<AddCourseSheet> createState() => _AddCourseSheetState();
@@ -99,8 +100,8 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
               bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             child: Container(
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
@@ -109,33 +110,33 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                    const Text(
+                    Text(
                       'Add Course',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     TitledInputField(
                       controller: titleController,
                       title: 'Course Title',
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     TitledInputField(
                       controller: descriptionController,
                       title: 'Description',
                       required: false,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     TitledInputField(
                       controller: imageController,
                       title: 'Course Image',
                       required: false,
                       hintText: 'Enter image URL or pick from gallery',
-                      hintStyle: const TextStyle(
+                      hintStyle: TextStyle(
                         color: Colors.grey,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                       ),
                       suffixIcon: IconButton(
                         onPressed: () async {
@@ -147,10 +148,10 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
                             imageController.text = imageName;
                           }
                         },
-                        icon: const Icon(Icons.add_photo_alternate_outlined),
+                        icon: Icon(Icons.add_photo_alternate_outlined),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     Row(
                       children: [
                         Expanded(
@@ -174,14 +175,14 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
                                 context.read<CourseCubit>().addCourse(course);
                               }
                             },
-                            child: const Text('Add'),
+                            child: Text('Add'),
                           ),
                         ),
-                        const SizedBox(width: 20),
+                        SizedBox(width: 20.w),
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () => Navigator.pop(context),
-                            child: const Text('Cancel'),
+                            child: Text('Cancel'),
                           ),
                         ),
                       ],

@@ -16,6 +16,7 @@ import 'package:tunceducationn/src/notifications/presentation/presentation/widge
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart' hide MaterialState;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddMaterialView extends StatefulWidget {
   const AddMaterialView({super.key});
@@ -159,10 +160,10 @@ class _AddMaterialsViewState extends State<AddMaterialView> {
         },
         child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(title: const Text('Add Materials')),
+          appBar: AppBar(title: Text('Add Materials')),
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               child: Center(
                 child: Column(
                   children: [
@@ -173,7 +174,7 @@ class _AddMaterialsViewState extends State<AddMaterialView> {
                         notifier: courseNotifier,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     InfoField(
                       controller: authorController,
                       border: true,
@@ -191,16 +192,16 @@ class _AddMaterialsViewState extends State<AddMaterialView> {
                         onPressed: setAuthor,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Text(
                       'You can upload multiple materials at once.',
                       style: context.theme.textTheme.bodySmall?.copyWith(
                         color: Colours.neutralTextColour,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     if (resources.isNotEmpty) ...[
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Expanded(
                         child: ListView.builder(
                           shrinkWrap: true,
@@ -220,20 +221,20 @@ class _AddMaterialsViewState extends State<AddMaterialView> {
                           },
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                     ],
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
                           onPressed: pickResources,
-                          child: const Text('Add Materials'),
+                          child: Text('Add Materials'),
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ElevatedButton(
                           onPressed: uploadMaterials,
-                          child: const Text('Confirm'),
+                          child: Text('Confirm'),
                         ),
                       ],
                     ),

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tunceducationn/core/common/app/providers/user_provider.dart';
 import 'package:tunceducationn/core/core.dart';
 import 'package:tunceducationn/core/extensions/context_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
@@ -22,20 +23,20 @@ class ProfileHeader extends StatelessWidget {
               radius: 50,
               backgroundImage: image != null
                   ? NetworkImage(image)
-                  : const AssetImage(MediaRes.user) as ImageProvider,
+                  : AssetImage(MediaRes.user) as ImageProvider,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             Text(
               user?.fullName ?? "No User",
-              style: const TextStyle(
+              style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 24,
+                  fontSize: 24.sp,
                   color: Colors.white),
               textAlign: TextAlign.center,
             ),
             if (user?.bio != null && user!.bio!.isNotEmpty) ...[
-              const SizedBox(
-                height: 8,
+              SizedBox(
+                height: 8.h,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -44,15 +45,15 @@ class ProfileHeader extends StatelessWidget {
                 child: Text(
                   user.bio!,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 12,
+                  style: TextStyle(
+                    fontSize: 12.sp,
                     color: Colours.neutralTextColour,
                   ),
                 ),
               ),
             ],
-            const SizedBox(
-              height: 16,
+            SizedBox(
+              height: 16.h,
             ),
           ],
         );

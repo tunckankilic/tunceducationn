@@ -33,12 +33,14 @@ class CourseInfoTile extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
+              Text(title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w500, color: Colors.white54)),
               Text(
                 subtitle,
                 style: const TextStyle(
                   fontSize: 12,
-                  color: Colours.neutralTextColour,
+                  color: Colors.white60,
                 ),
               ),
             ],

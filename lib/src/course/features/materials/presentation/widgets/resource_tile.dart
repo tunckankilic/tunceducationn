@@ -2,6 +2,7 @@ import 'package:tunceducationn/core/res/res.dart';
 import 'package:tunceducationn/src/course/features/materials/presentation/app/providers/resource_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResourceTile extends StatelessWidget {
   const ResourceTile({super.key});
@@ -34,10 +35,10 @@ class ResourceTile extends StatelessWidget {
         return ExpansionTile(
           tilePadding: EdgeInsets.zero,
           expandedAlignment: Alignment.centerLeft,
-          childrenPadding: const EdgeInsets.symmetric(horizontal: 10),
+          childrenPadding: EdgeInsets.symmetric(horizontal: 10.w),
           title: Text(
             resource.title!,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w600,
             ),
@@ -56,14 +57,14 @@ class ResourceTile extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Text(
+                            Text(
                               'Author',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                             Text(resource.author!),
                           ],
                         ),
@@ -80,15 +81,15 @@ class ResourceTile extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            if (!authorIsNull) const SizedBox(height: 10),
-                            const Text(
+                            if (!authorIsNull) SizedBox(height: 10.h),
+                            Text(
                               'Description',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5.h),
                             Text(resource.description!),
                           ],
                         ),

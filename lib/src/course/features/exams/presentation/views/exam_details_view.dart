@@ -11,6 +11,7 @@ import 'package:tunceducationn/src/course/features/exams/presentation/app/cubit/
 import 'package:tunceducationn/src/course/features/exams/presentation/views/exam_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ExamDetailsView extends StatefulWidget {
   const ExamDetailsView(this.exam, {super.key});
@@ -58,7 +59,7 @@ class _ExamDetailsViewState extends State<ExamDetailsView> {
           builder: (context, state) {
             return SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 child: Column(
                   children: [
                     Expanded(
@@ -66,8 +67,8 @@ class _ExamDetailsViewState extends State<ExamDetailsView> {
                         children: [
                           Center(
                             child: Container(
-                              width: 80,
-                              height: 80,
+                              width: 80.w,
+                              height: 80.h,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 color: Colours.physicsTileColour,
@@ -76,36 +77,36 @@ class _ExamDetailsViewState extends State<ExamDetailsView> {
                                 child: completeExam.imageUrl != null
                                     ? Image.network(
                                         completeExam.imageUrl!,
-                                        width: 60,
-                                        height: 60,
+                                        width: 60.w,
+                                        height: 60.h,
                                         fit: BoxFit.cover,
                                       )
                                     : Image.asset(
                                         MediaRes.test,
-                                        width: 60,
-                                        height: 60,
+                                        width: 60.w,
+                                        height: 60.h,
                                         fit: BoxFit.cover,
                                       ),
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           Text(
                             completeExam.title,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 20,
+                            style: TextStyle(
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           Text(
                             completeExam.description,
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colours.neutralTextColour,
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           CourseInfoTile(
                             image: MediaRes.examTime,
                             title:
@@ -115,7 +116,7 @@ class _ExamDetailsViewState extends State<ExamDetailsView> {
                                 '${completeExam.timeLimit.displayDurationLong}',
                           ),
                           if (state is ExamQuestionsLoaded) ...[
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             CourseInfoTile(
                               image: MediaRes.examQuestions,
                               title: '${completeExam.questions?.length} '
@@ -128,7 +129,7 @@ class _ExamDetailsViewState extends State<ExamDetailsView> {
                       ),
                     ),
                     if (state is GettingExamQuestions)
-                      const Center(child: LinearProgressIndicator())
+                      Center(child: LinearProgressIndicator())
                     else if (state is ExamQuestionsLoaded)
                       RoundedButton(
                         label: 'Start Exam',

@@ -13,6 +13,7 @@ import 'package:tunceducationn/src/notifications/presentation/presentation/widge
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddExamView extends StatefulWidget {
   const AddExamView({super.key});
@@ -94,10 +95,10 @@ class _AddExamViewState extends State<AddExamView> {
         },
         child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(title: const Text('Add Exam')),
+          appBar: AppBar(title: Text('Add Exam')),
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               child: Center(
                 child: Column(
                   children: [
@@ -108,13 +109,13 @@ class _AddExamViewState extends State<AddExamView> {
                         notifier: courseNotifier,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     if (examFile != null) ...[
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Card(
                         child: ListTile(
                           leading: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            padding: EdgeInsets.symmetric(vertical: 5.h),
                             child: Image.asset(MediaRes.json),
                           ),
                           title: Text(examFile!.path.split('/').last),
@@ -122,13 +123,13 @@ class _AddExamViewState extends State<AddExamView> {
                             onPressed: () => setState(() {
                               examFile = null;
                             }),
-                            icon: const Icon(Icons.close),
+                            icon: Icon(Icons.close),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                     ],
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -140,10 +141,10 @@ class _AddExamViewState extends State<AddExamView> {
                                 : 'Replace Exam File',
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ElevatedButton(
                           onPressed: uploadExam,
-                          child: const Text('Confirm'),
+                          child: Text('Confirm'),
                         ),
                       ],
                     ),

@@ -65,9 +65,9 @@ class TabNavigator extends ChangeNotifier {
 class TabNavigatorProvider extends InheritedNotifier<TabNavigator> {
   const TabNavigatorProvider({
     required this.navigator,
-    required Widget child,
-    Key? key,
-  }) : super(notifier: navigator, key: key, child: child);
+    required super.child,
+    super.key,
+  }) : super(notifier: navigator);
 
   final TabNavigator navigator;
 

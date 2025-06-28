@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tunceducationn/core/common/views/loading_view.dart';
 import 'package:tunceducationn/core/common/widgets/not_found_text.dart';
 import 'package:tunceducationn/core/services/injection_container.dart';
@@ -38,9 +39,11 @@ class _QuickAccessTabBodyState extends State<QuickAccessTabBody> {
           return const LoadingView();
         } else if ((state is CoursesLoaded && state.courses.isEmpty) ||
             state is CourseError) {
-          return const NotFoundText(
-            'No courses found\nPlease contact admin or if you are admin, '
-            'add courses',
+          return NotFoundText(
+            text: 'No courses found\nPlease contact admin or if you are admin, '
+                'add courses',
+            textAlign: TextAlign.center,
+            fontSize: 16.sp,
           );
         } else if (state is CoursesLoaded) {
           final courses = state.courses

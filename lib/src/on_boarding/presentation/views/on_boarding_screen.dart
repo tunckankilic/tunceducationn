@@ -7,6 +7,7 @@ import 'package:tunceducationn/core/core.dart';
 import 'package:tunceducationn/src/on_boarding/domain/domain.dart';
 import 'package:tunceducationn/src/on_boarding/presentation/cubit/on_boarding/on_boarding_cubit.dart';
 import 'package:tunceducationn/src/on_boarding/presentation/widgets/on_boarding_body.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // A StatefulWidget representing the OnBoarding screen.
 class OnBoardingScreen extends StatefulWidget {
@@ -61,7 +62,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ],
                 ),
                 Align(
-                  alignment: const Alignment(0, .04),
+                  alignment: Alignment(0, .04.h),
                   child: SmoothPageIndicator(
                     controller: pageController,
                     count: 3,
@@ -72,10 +73,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         curve: Curves.easeInOut,
                       );
                     },
-                    effect: const WormEffect(
-                      dotHeight: 10,
-                      dotWidth: 10,
-                      spacing: 40,
+                    effect: WormEffect(
+                      dotHeight: 10.h,
+                      dotWidth: 10.w,
+                      spacing: 40.w,
                       activeDotColor: Colours.primaryColour,
                       dotColor: Colors.white,
                     ),

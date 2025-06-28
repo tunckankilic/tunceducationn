@@ -4,6 +4,7 @@ import 'package:tunceducationn/core/extensions/context_extension.dart';
 import 'package:tunceducationn/core/res/res.dart';
 import 'package:tunceducationn/src/on_boarding/domain/entities/entities.dart';
 import 'package:tunceducationn/src/on_boarding/presentation/cubit/on_boarding/on_boarding_cubit.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingBody extends StatelessWidget {
   const OnBoardingBody({required this.pageContent, super.key});
@@ -18,30 +19,30 @@ class OnBoardingBody extends StatelessWidget {
         Image.asset(pageContent.image, height: context.height * .4),
         SizedBox(height: context.height * .03),
         Padding(
-          padding: const EdgeInsets.all(20).copyWith(bottom: 0),
+          padding: EdgeInsets.all(20.w).copyWith(bottom: 0),
           child: Column(
             children: [
               Text(
                 pageContent.title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontFamily: Fonts.aeonik,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(
+                    fontFamily: Fonts.aeonik,
+                    fontSize: 40.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               SizedBox(height: context.height * .02),
               Text(
                 pageContent.description,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14.sp, color: Colors.white),
               ),
               SizedBox(height: context.height * .05),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 17,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 50.w,
+                    vertical: 17.h,
                   ),
                   backgroundColor: Colours.primaryColour,
                   foregroundColor: Colors.white,
@@ -49,12 +50,12 @@ class OnBoardingBody extends StatelessWidget {
                 onPressed: () {
                   context.read<OnBoardingCubit>().cacheFirstTimer();
                 },
-                child: const Text(
+                child: Text(
                   'Get Started',
                   style: TextStyle(
-                    fontFamily: Fonts.aeonik,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontFamily: Fonts.aeonik,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
               ),
             ],

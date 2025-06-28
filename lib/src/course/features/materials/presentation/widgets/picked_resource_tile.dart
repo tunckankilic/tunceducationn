@@ -2,6 +2,7 @@ import 'package:tunceducationn/core/res/media_res.dart';
 import 'package:tunceducationn/src/course/features/materials/domain/entities/picked_resource.dart';
 import 'package:tunceducationn/src/course/features/materials/presentation/widgets/picked_resource_horizontal_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PickedResourceTile extends StatelessWidget {
   const PickedResourceTile(
@@ -23,23 +24,23 @@ class PickedResourceTile extends StatelessWidget {
         children: [
           ListTile(
             leading: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
+              padding: EdgeInsets.symmetric(vertical: 5.h),
               child: Image.asset(MediaRes.material),
             ),
             title: Text(
               resource.path.split('/').last,
               maxLines: 1,
             ),
-            contentPadding: const EdgeInsets.only(left: 16, right: 5),
+            contentPadding: EdgeInsets.only(left: 16.r, right: 5.r),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                IconButton(onPressed: onEdit, icon: const Icon(Icons.edit)),
-                IconButton(onPressed: onDelete, icon: const Icon(Icons.close)),
+                IconButton(onPressed: onEdit, icon: Icon(Icons.edit)),
+                IconButton(onPressed: onDelete, icon: Icon(Icons.close)),
               ],
             ),
           ),
-          const Divider(height: 1),
+          Divider(height: 1),
           PickedResourceHorizontalText(label: 'Author', value: resource.author),
           PickedResourceHorizontalText(label: 'Title', value: resource.title),
           PickedResourceHorizontalText(
