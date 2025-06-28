@@ -1,4 +1,4 @@
-// import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +20,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // FirebaseUIAuth.configureProviders([EmailAuthProvider()]);
+
   await init();
   runApp(const MyApp());
 }

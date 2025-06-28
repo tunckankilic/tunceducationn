@@ -48,5 +48,31 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<!-- Push Notifications -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>audio</string>
+	</array>
+	<!-- File Picker ve Kamera İzinleri -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Fotoğraf seçmek için galerinize erişim izni gerekiyor.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Fotoğraf çekmek için kamera izni gerekiyor.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Ses kaydı için mikrofon izni gerekiyor.</string>
+	<!-- Firebase Crashlytics -->
+	<key>FirebaseCrashlyticsCollectionEnabled</key>
+	<true/>
+	<!-- Firebase Analytics -->
+	<key>FirebaseAnalyticsEnabled</key>
+	<true/>
+
 </dict>
 </plist>
